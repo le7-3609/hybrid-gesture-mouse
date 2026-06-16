@@ -5,8 +5,10 @@ Responsibility: convert raw BGR/RGB video frames into a structured
 MediaPipe NormalizedLandmarkList (or None when no hand is found).
 All MediaPipe configuration lives here; nothing else touches mp.solutions.
 """
-from __future__ import annotations
-import mediapipe as mp
+try:
+    import mediapipe.solutions.hands as mp_hands
+except (ModuleNotFoundError, AttributeError):
+    import utils.mediapipe_shim as mp_hands
 
 
 class HandTracker:
@@ -29,8 +31,7 @@ class HandTracker:
         min_detection_confidence: float = 0.7,
         min_tracking_confidence: float = 0.5,
     ) -> None:
-        self._mp_hands = mp.solutions.hands
-        self._hands = self._mp_hands.Hands(
+        self._hands = mp_hands.Hands(
             max_num_hands=max_num_hands,
             min_detection_confidence=min_detection_confidence,
             min_tracking_confidence=min_tracking_confidence,
