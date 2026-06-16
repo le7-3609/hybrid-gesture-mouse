@@ -1,0 +1,36 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# Virtual environments
+venv/
+.venv/
+env/
+.env/
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Models (large binaries — collect & train locally)
+models/gesture_model.pkl
+models/hand_landmarker.task
+
+# Training data (user-specific)
+training/gestures_dataset.csv
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
